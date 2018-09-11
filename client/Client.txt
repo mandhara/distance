@@ -1,0 +1,38 @@
+package com.capgemin.dcs.client;
+
+import java.util.Scanner;
+
+import com.capgemin.dcs.dao.DaoImpl;
+import com.capgemin.dcs.entities.user;
+
+public class Client {
+
+	public static void main(String[] args) {
+
+		Scanner scanner = new Scanner(System.in);
+		Scanner scanner1 = new Scanner(System.in);
+		System.out.println("Enter distance Id:");
+		int distanceId=scanner.nextInt();
+		System.out.println("Enter source:");
+		String source=scanner1.nextLine();
+		System.out.println("Enter destination:");
+		String destination=scanner1.nextLine();
+		System.out.println("Enter distance in km:");
+		int distanceInKm=scanner.nextInt();
+			
+		double distanceInMiles = (double) (0.621*distanceInKm);
+		
+		
+		
+		user user= new user(id,source,destination,distanceInKm,distanceInMiles);
+		
+		DaoImpl dao = new DaoImpl(user);
+		dao.beginTransaction();
+		
+		dao.addDetails(user);
+		dao.commitTransaction();
+		
+		
+	}
+
+}
